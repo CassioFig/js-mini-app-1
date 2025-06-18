@@ -1,4 +1,3 @@
-import { playLionAnimation } from './3dModelLoader.js';
 
 console.log("JavaScript loaded!");
 
@@ -74,6 +73,8 @@ function renderBoard() {
   const board = document.getElementById("board");
   board.innerHTML = "";
 
+  console.log("aktualna téma:", currentTheme)
+
   cards.forEach((imgName, index) => {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -96,8 +97,8 @@ function renderBoard() {
     inner.appendChild(back);
     card.appendChild(inner);
 
-    card.addEventListener("click", () => flipCard(card, index));
     board.appendChild(card);
+    card.addEventListener("click", () => flipCard(card, index));
   });
 }
 
@@ -151,33 +152,7 @@ function checkGameOver() {
         ? "<strong>Player 2 wins!</strong>"
         : "<strong>It's a draw!</strong>";
     document.getElementById("winner").innerHTML = winnerText;
-    document.getElementById("feed-message").classList.remove("hidden");
-    document.getElementById("food-options").classList.remove("hidden");
+  
   }
 }
-
-function playSound(file) {
-  const audio = new Audio(`sounds/${file}`);
-  audio.play();
-}
-
-
-import { init3DModel } from './3dModelLoader.js';
-init3DModel();
-
-window.addEventListener('DOMContentLoaded', () => {
-  init3DModel();
-  startGame();
-});
-
-
-window.feedLion = function(feed) {
-  const reaction = document.getElementById('lion-reaction');
-  if (feed === 'bone') reaction.textContent = 'Lion is happy!';
-  else if (feed === 'meat') reaction.textContent = 'Lion roar!';
-  else if (feed === 'water') reaction.textContent = 'Lion moves tail!';
-  playSound(''+(feed==='water'?'wag':feed=== 'meat'?'roar':'happy')+'.mp3');
-  document.getElementById('feed-message').classList.add('hidden');
-  document.getElementById('food-options').classList.add('hidden');
-  playLionAnimation();
-}
+startGame();

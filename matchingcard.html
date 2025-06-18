@@ -10,21 +10,12 @@
 </head>
 
 <body>
-    <div id="container">
-        <div id="lion-area">
-            <div id="lion-3d-container" style="width: 300px; height: 300px;"></div>
-            <p id="lion-reaction"></p>
-            <p id="feed-message" class="hidden"><strong>Feed me</strong></p>
-            <div id="food-options" class="hidden">
-                <button onclick="feedLion('bone')">🦴</button>
-                <button onclick="feedLion('meat')">🍖</button>
-                <button onclick="feedLion('water')">💧</button>
-            </div>
-        </div>
-        <div class="left">
 
             <h1 id="mcg">Matching Card Game</h1>
 
+            <div class="game-wrapper">
+                <div id="board"></div>
+            </div>
 
             <div class="player-number">
                 <p class="pm1">1.Player: <span id="score1">&nbsp;0 </span>&nbsp;points</p>
@@ -32,25 +23,10 @@
                 <p class="pm3">It´s turn: Player <span id="current-player">&nbsp;1</span></p>
             </div>
 
-            <div class="game-wrapper">
-                <div id="board"></div>
                 <p id="winner"></p>
                 <button onclick="startGame()">New game</button>
-            </div>
-        </div>
-    </div>
-  <script type="module">
-  import { init3DModel, playLionAnimation } from './js/3dModelLoader.js';
-
-  document.addEventListener('DOMContentLoaded', () => {
-    init3DModel();
-
-    document.getElementById('feed-button').addEventListener('click', () => {
-      playLionAnimation();
-    });
-  });
-</script>
-<script type="module" src="./js/matchingcard.js"></script>
+ 
+<script src="./js/matchingcard.js"></script>
 </body>
 
 </html>
